@@ -51,17 +51,23 @@
 }
 
 - (IBAction)addHashtags:(id)sender {
-    NSArray *array = [self.textView.text componentsSeparatedByString:@" "];
-    NSMutableArray *second = [[NSMutableArray alloc] initWithArray:array];
+    NSArray *currentWords = [self.textView.text componentsSeparatedByString:@" "];
     
-    for (int i = 0; i < array.count; i = i + 2) {
-        //NSLog(@"%@",[array objectAtIndex:i]);
-        NSString *test = [NSString stringWithFormat:@"#%@",[second objectAtIndex:i]];
-        [second replaceObjectAtIndex:i withObject:test];
-        //[second objectAtIndex:i] = [NSString stringWithFormat:@"#%@",[second objectAtIndex:i]];
+    NSMutableArray *newWords = [[NSMutableArray alloc] initWithArray:currentWords];
+    
+    bool key = 0;
+    
+    for (int i = 0; i < currentWords.count; i++) {
+        
+        if (![[currentWords objectAtIndex:i] hasPrefix:@"#"] && key != 1 ) {
+            NSString *test = [NSString stringWithFormat:@"#%@", [newWords objectAtIndex:i]];
+            [newWords replaceObjectAtIndex:i withObject:test];
+            key = 1;
+        }else if (![[currentWords objectAtIndex:i] hasPrefix:@"#"] && key == 1 ){
+            key = 0;
+        }
     }
-    
-    self.textView.text = [second componentsJoinedByString:@" "];
+    self.textView.text = [newWords componentsJoinedByString:@" "];
     
 }
 
