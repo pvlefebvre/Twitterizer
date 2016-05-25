@@ -70,6 +70,22 @@
     self.textView.text = [newWords componentsJoinedByString:@" "];
     
 }
+- (IBAction)reverseNonHashtagWords:(id)sender {
+    NSArray *currentWords = [self.textView.text componentsSeparatedByString:@" "];
+    
+    NSMutableArray *newWords = [[NSMutableArray alloc] initWithArray:currentWords];
+    
+    for (int i = 0; i < currentWords.count; i++) {
+        if (![[currentWords objectAtIndex:i] hasPrefix:@"#"]) {
+            NSString *reverseString = [NSString new];
+            for (int j = (int)[[currentWords objectAtIndex:i] length] - 1; j >= 0; j--) {
+                reverseString=[reverseString stringByAppendingFormat:@"%c",[[currentWords objectAtIndex:i] characterAtIndex:j]];
+            }
+            [newWords replaceObjectAtIndex:i withObject:reverseString];
+        }
+    }
+    self.textView.text = [newWords componentsJoinedByString:@" "];
+}
 
 
 

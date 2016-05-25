@@ -46,6 +46,14 @@
                                     <action selector="addHashtags:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b32-cW-dDa"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="eT3-q6-ibn">
+                                <rect key="frame" x="116" y="320" width="55" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Reverse"/>
+                                <connections>
+                                    <action selector="reverseNonHashtagWords:" destination="BYZ-38-t0r" eventType="touchUpInside" id="as9-hx-LjA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
