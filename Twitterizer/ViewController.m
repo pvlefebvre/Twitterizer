@@ -50,6 +50,20 @@
     
 }
 
+- (IBAction)addHashtags:(id)sender {
+    NSArray *array = [self.textView.text componentsSeparatedByString:@" "];
+    NSMutableArray *second = [[NSMutableArray alloc] initWithArray:array];
+    
+    for (int i = 0; i < array.count; i = i + 2) {
+        //NSLog(@"%@",[array objectAtIndex:i]);
+        NSString *test = [NSString stringWithFormat:@"#%@",[second objectAtIndex:i]];
+        [second replaceObjectAtIndex:i withObject:test];
+        //[second objectAtIndex:i] = [NSString stringWithFormat:@"#%@",[second objectAtIndex:i]];
+    }
+    
+    self.textView.text = [second componentsJoinedByString:@" "];
+    
+}
 
 
 
